@@ -46,6 +46,7 @@ in your console. */
     return cool(number);
   }
 
+
 /******************************************************************************\
 	#PROBLEM-03
 \******************************************************************************/
@@ -86,13 +87,13 @@ http://stackoverflow.com/questions/17776940/javascript-module-pattern-with-examp
 */
 
   function counterFactory(value) {
-    // Code here.
+
     return {
       inc: function(){
-        return ++value;
+        return ++value;  //val += 1
       },
       dec: function(){
-        return --value;
+        return --value;  //val -= 1
       }
     }
   }
@@ -167,7 +168,7 @@ var allUsers = ["Tom", "Dick", "Harry", "Anne", "Quinton", "Katie", "Mary"];
 
 function findPotentialFriends(existingFriends) {
 //CODE HERE
- return function Alex(user){
+ return function friendlyFriends(user){
    if(friends.includes(user)){
      return false;
    }
@@ -175,6 +176,20 @@ function findPotentialFriends(existingFriends) {
      return true
    }
  }
+
+//  function findPotentialFriends(existingFriends) {
+//   function funct(friend){
+//     for(var i = 0; i < existingFriends.length; i++){
+//       if(existingFriends[i] === friend){
+//         return false;
+//       }
+//     }
+//     return true;
+//   }
+//   return funct;
+// }
+
+
 //ENDS HERE
 }
 
@@ -225,3 +240,20 @@ function timeOutCounter() {
   }
 }
 timeOutCounter();
+
+
+
+// function timeOutCounter() {
+//   for (var i = 0; i <= 5; i++) {
+//     newScope(i)
+//   }
+
+//   function newScope(i) {
+//     setTimeout(function() {
+//       console.log(i);
+//     }, i * 1000)
+//   }
+  
+// }
+// timeOutCounter();
+
