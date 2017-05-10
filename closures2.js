@@ -14,47 +14,37 @@ function outer() {
 closure over the name variable. Invoke outer saving the return value into
 another variable called 'inner'. */
 
-var inner = outer();
+  // Code Here
+  var inner = outer();
 
-//Once you do that, invoke inner.
-
-inner();
-
-
-
-
-
-
-
-
-
+  //Once you do that, invoke inner.
+  //Code Here
+  inner();
 
 /******************************************************************************\
 	#PROBLEM-02
 \******************************************************************************/
 
 
-function callFriend(name) {
-  function dial(number) {
-    return 'Calling ' + name + ' at ' + number
+  function callFriend(name) {
+    function dial(number) {
+      return 'Calling ' + name + ' at ' + number
+    }
+    return dial
   }
-  return dial
-}
 
 /****** INSTRUCTIONS PROBLEM 2 ******/
 /* Above you're given a callFriend function that returns the dial function.
 Create a callJake function that when invoked with '435-555-9248' returns 'Calling Jake at 435-555-9248'
 in your console. */
 
- var callJake = callFriend('Jake', '435-555-9248');
+  //Code Here
 
-
-
-
-
-
-
-
+  function callJake(number){
+    var name = "Jake";
+    var cool = callFriend(name);
+    return cool(number);
+  }
 
 /******************************************************************************\
 	#PROBLEM-03
@@ -64,12 +54,15 @@ in your console. */
 /* Write a function called makeCounter that makes the following code work
 properly. */
 
-var makeCounter = function(number) {
-  var number = 0;
-  return function() {
-  return number +=1;
+//Code Here
+
+  function makeCounter(){
+    var counter = 0;
+    return function(){
+      counter++;
+      return counter;
+    }
   }
-}
 
 //Uncomment this once you make your function
   var count = makeCounter();
@@ -77,15 +70,6 @@ var makeCounter = function(number) {
   count(); // 2
   count(); // 3
   count(); // 4
-
-
-
-
-
-
-
-
-
 
 /******************************************************************************\
 	#PROBLEM-04
@@ -101,35 +85,23 @@ Information on the module pattern available here:
 http://stackoverflow.com/questions/17776940/javascript-module-pattern-with-example?answertab=votes#tab-top
 */
 
-function counterFactory(value) {
-
-  var val = value;
-  
-  return{
-    inc: function() {
-      return val += 1;
-    },
-    dec: function() {
-      return val -= 1;
+  function counterFactory(value) {
+    // Code here.
+    return {
+      inc: function(){
+        return ++value;
+      },
+      dec: function(){
+        return --value;
+      }
     }
   }
-}
 
-
-counter = counterFactory(10);
-counter.inc() // 11
-counter.inc() // 12
-counter.inc() // 13
-counter.dec() // 12
-
-
-
-
-
-
-
-
-
+  counter = counterFactory(10);
+  counter.inc() // 11
+  counter.inc() // 12
+  counter.inc() // 13
+  counter.dec() // 12
 
 /******************************************************************************\
 	#PROBLEM-05
@@ -139,30 +111,17 @@ counter.dec() // 12
 /* Inside the motivation function create another function called message that
 will return 'You're doing awesome, keep it up firstname lastname.' */
 
-function motivation(firstname, lastname) {
-
-  var welcomeText = 'You\'re doing awesome, keep it up ';
-
-   function message() {
-      return welcomeText + firstname + ' ' + lastname + '.';
+  function motivation(firstname, lastname) {
+    var welcomeText = 'You\'re doing awesome, keep it up ';
+    // code message function here.
+    function message(){
+      return welcomeText + firstname + " " + lastname + "."
     }
+    //Uncommment this to return the value of your invoked message function
+    return message();
+  }
 
-
-  //Uncommment this to return the value of your invoked message function
-  return message();
-
-}
-
-motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
-
-
-
-
-
-
-
-
-
+  motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
 
 /******************************************************************************\
 	#PROBLEM-06
@@ -173,28 +132,26 @@ motivation('Billy', 'Bob'); // 'You're doing awesome keep it up Billy Bob.
 invokes privateMethod. Invoke this by calling module.publicMethod(); outside
 the module scope */
 
-var module = (function() {
-  var person = {
-    name: "phillip",
-    age: 29,
-    location: "Utah"
-  };
+  var module = (function() {
+    var person = {
+      name: "phillip",
+      age: 29,
+      location: "Utah"
+    };
 
-  function privateMethod(){
-    return "Hi, I'm " + person.name + ", age " + person.age + " from " + person.location;
-  }
-
-  // Anything that is being returned is made public and can be invoked from
-  // outside our lexical scope
-  return {
-    publicMethod: function() {
-      return privateMethod();
+    function privateMethod(){
+      return "Hi, I'm " + person.name + ", age " + person.age + " from " + person.location;
     }
-  };
 
-})();
-
-
+    // Anything that is being returned is made public and can be invoked from
+    // outside our lexical scope
+    return {
+      // CODE HERE.
+      publicMethod: function(){
+        return privateMethod();
+      }
+    };
+  })();
 
 /******************************************************************************\
  #PROBLEM-07
@@ -209,15 +166,16 @@ var secondLevelFriends = ["Anne", "Harry", "Quinton"];
 var allUsers = ["Tom", "Dick", "Harry", "Anne", "Quinton", "Katie", "Mary"];
 
 function findPotentialFriends(existingFriends) {
-  function funct(friend){
-    for(var i = 0; i < existingFriends.length; i++){
-      if(existingFriends[i] === friend){
-        return false;
-      }
-    }
-    return true;
-  }
-  return funct;
+//CODE HERE
+ return function Alex(user){
+   if(friends.includes(user)){
+     return false;
+   }
+   else{
+     return true
+   }
+ }
+//ENDS HERE
 }
 
 var isNotAFriend = findPotentialFriends( friends );
@@ -231,10 +189,10 @@ var isNotAFriend = findPotentialFriends( friends );
 /* Using your findPotentialFriends function from above and the Array.filter
 method, find all potential second level friends as well as potential friends
 from allUsers. */
+/*insert code where the "?"s are*/
 
-var potentialSecondLevelFriends = "?";
-var allPotentialFriends = "?";
-
+var potentialSecondLevelFriends = secondLevelFriends.filter(isNotAFriend);
+var allPotentialFriends = allUsers.filter(isNotAFriend);
 
 /******************************************************************************\
 	#PROBLEM-08
@@ -258,14 +216,12 @@ to 5. What we need to do is console.log(i) so that it logs like so:
 
 function timeOutCounter() {
   for (var i = 0; i <= 5; i++) {
-    newScope(i)
+    setTimeout(function(i) { //pass in i
+      //CODE HERE
+    	return function(){     //return function
+        console.log(i)
+      }
+	}(i), i * 1000)   //add (i) right after parenthesis at the end of the function so the function knows what i is on the next iteration
   }
-
-  function newScope(i) {
-    setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
-  }
-  
 }
 timeOutCounter();
